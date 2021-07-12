@@ -9,10 +9,15 @@ gem 'rails', '~> 6.1.4'
   gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
+# gem 'sassc-rails', '~> 2.1', '>= 2.1.2'
 # Use SCSS for stylesheets
 # gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.0'
+# Simple form
+gem 'simple_form', '~> 5.1'
+# Bootstrap
+# gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

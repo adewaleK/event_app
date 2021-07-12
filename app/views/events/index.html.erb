@@ -1,0 +1,10 @@
+<div class="container">
+  <h2>Home page of event!!</h2>
+  <%=flash[:alert] %>
+  <% @events.each do |e| %>
+    <%= link_to e.title, event_path(e) %>
+    <%= link_to "Edit event", edit_event_path(e) %>
+    <%= link_to "Delet event", event_path(e), method: :delete, data: { confirm: "Are you sure" } %>
+    <br>
+  <% end %>
+</div>
