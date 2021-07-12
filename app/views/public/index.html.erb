@@ -1,23 +1,19 @@
-<div class="container">
+<div class="container" id="home-box">
 
-   <h2>Home page</h2>
+   <% if user_signed_in? %>
+      <p class="text-primary">Logged in as <b><%= current_user.email %></b></p>
+   <% end %>
 
    <div class="d-flex">
       <div>
         <h2>
           Your Best Event Management App.<br>
-          Create and MAnage All Events with ease
+          Create and Manage All Events with ease
         
         </h2>
         <button>Get started</button>
       
       </div>
       <div>image here</div>
-   
-   
-   </div>
-   <div class="footer">
-   <p>Copyright @2021</p>
-   
-   </div>
+   </div
 </div>

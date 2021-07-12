@@ -1,4 +1,11 @@
 <div class="container">
     <h2 class="text-center">Edit event</h2>
+
+    <% if flash[:alert] %>
+    <div class="success-msg">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+  
     <%= render 'form' %>
 </div>

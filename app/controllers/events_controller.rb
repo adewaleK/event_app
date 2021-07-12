@@ -1,17 +1,20 @@
 class EventsController < ApplicationController
     before_action :find_event, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user!, except: [:index, :show]
 
 
     def index
         @events = Event.all.order("created_at DESC")
+        @active_events = Event.active
+        @inactive_events = Event.inactive
     end
 
     def new
-        @event = Event.new
+        @event = current_user.events.build
     end
 
     def create
-        @event = Event.new(event_params)
+        @event = current_user.events.build(event_params)
         if @event.save
             redirect_to events_path
             flash[:alert] = "Event created successfully"

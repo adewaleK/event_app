@@ -12,11 +12,111 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <style>
+      #home-box{
+        height: 100vh
+      }
+      .error-box{
+        background-color: pink;
+        padding: 10px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        color: red;
+        font-weight:bold
+      }
+
+      .success-msg{
+        background-color: #effff8;
+        padding: 10px;
+        border-radius: 10px;
+        font-weight:bold
+      }
+
+      .navbar-item{
+        margin-right: 15px
+      }
+
+      .navbar-link{
+        color: black;
+        font-size: 18px
+      }
+
+      .form-box{
+        width: 50%;
+        margin: 0 auto;
+        height: 100vh
+      }
+
+      .form-inputs{
+        width: 100%
+      }
+
+      input{
+        margin-bottom: 10px;
+        width: 100%;
+        padding: 6px
+      }
+
+      .special-event{
+        padding:10px;
+        background-color: #f7f7f7;
+        width: 100%;
+        margin-bottom: 20px
+      }
+
+      .event-box{
+        background-color: #e8e8e8;
+        padding: 10px;
+        border: 1px solid black;
+        margin-bottom: 15px;
+        border-radius: 5px
+      }
+
+      .main-events{
+        background-color:#e7e7e7; 
+        margin-bottom:20px; 
+        padding:15px;
+        border-radius: 7px
+      }
+
+      @media screen and (max-width: 768px) {
+        .form-box{
+          width: 70%;
+          height:100vh
+        }
+      }
+    
+    </style>
   
   </head>
 
   <body>
-    <%= yield %>
-
+     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+       <div class="container">
+         <div class="navbar-header">
+           <%= link_to "EventApp", root_path, class: "navbar-brand" %>
+         </div>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarNav">
+         <ul class="nav navbar-nav ml-auto">   
+           <% if user_signed_in? %>
+             <li class= "navbar-item"><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "navbar-link" %></li>
+             <li class= "navbar-item"><%= link_to "All  events", events_path, class: "navbar-link" %></li>
+             <li class= "navbar-item"><%= link_to "Create event", new_event_path, class: "navbar-link" %></li>
+           <% else %>
+             <li class= "navbar-item"><%= link_to "Login", new_user_session_path , class: "navbar-link"%></li>
+             <li class= "navbar-item"><%= link_to "Sign Up", new_user_registration_path, class: "navbar-link" %></li>
+           <% end %>     
+         </ul>
+         </div>
+       </div>
+     
+     </nav>
+     <p class="notice"><%= notice %></p>
+     <p class="alert"><%= alert %></p>
+     <%= yield %>
   </body>
 </html>

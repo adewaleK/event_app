@@ -1,8 +1,8 @@
-<div class="container">
+<div class="form-box">
     <h2 class="text-center">Create a new event</h2>
    
     <% if flash[:messages] %>
-      <div class="bg-danger p-3 rounded mb-5">
+      <div class="error-box">
         <% flash[:messages].each do |msg| %>
         <p><%= msg%></p>
       <% end %>

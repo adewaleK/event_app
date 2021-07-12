@@ -1,10 +1,67 @@
 <div class="container">
-  <h2>Home page of event!!</h2>
-  <%=flash[:alert] %>
-  <% @events.each do |e| %>
-    <%= link_to e.title, event_path(e) %>
-    <%= link_to "Edit event", edit_event_path(e) %>
-    <%= link_to "Delet event", event_path(e), method: :delete, data: { confirm: "Are you sure" } %>
-    <br>
-  <% end %>
+  <div class="row">
+    <div class="col-sm-8">
+    <% if flash[:alert] %>
+      <div class="success-msg">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+    <% @events.each do |e| %>
+       <div class="main-events">
+
+       <h3><%= link_to e.title, event_path(e) %></h3>
+       <p><%= link_to e.description %></p>
+       <p><%= e.location%></p>
+       <p><%= e.date %></p>
+     <% if current_user.id === e.user_id %>
+       <%= link_to "Edit event", edit_event_path(e) %>
+       <%= link_to "Delet event", event_path(e), method: :delete, data: { confirm: "Are you sure" } %>
+     <% end %>
+   
+     <br>
+       
+       
+       </div>
+    <% end %>
+  
+  </div>
+  <div class="col-sm-4">
+    <div style="margin-bottom:40px">
+    <h3>Active Events</h3>
+      <% if !@active_events.empty? %>
+          <% @active_events.each do |event| %>
+            <div class="event-box">
+              <p><span>Tittle:</span> <%= event.title %></p>
+              <p><span>Description:</span> <%= event.description %></p>
+              <p><span>Location: </span><%= event.location %></p>
+              <p><span>Date: </span><%= event.date %></p>
+            </div>
+          <% end %>
+        <% else %>
+          <p>No any active events</p>
+        <% end %>
+       
+       </div>
+       <div style="margin-bottom:40px">
+       <h3>Inactive Events</h3>
+         <% if !@inactive_events.empty? %>
+             <% @inactive_events.each do |event| %>
+               <div class="event-box">
+                 <p><span>Tittle:</span> <%= event.title %></p>
+                 <p><span>Description:</span> <%= event.description %></p>
+                 <p><span>Location: </span><%= event.location %></p>
+                 <p><span>Date: </span><%= event.date %></p>
+               </div>
+             <% end %>
+           <% else %>
+             <p>No any inactive events</p>
+           <% end %>
+          
+          </div>
+     </div>
+  </div>
+
+  
+  
+  </div>
 </div>
