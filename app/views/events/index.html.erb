@@ -8,14 +8,13 @@
     <% end %>
     <% @events.each do |e| %>
        <div class="main-events">
-
        <h3><%= link_to e.title, event_path(e) %></h3>
        <p><%= link_to e.description %></p>
        <p><%= e.location%></p>
        <p><%= e.date %></p>
      <% if current_user.id === e.user_id %>
-       <%= link_to "Edit event", edit_event_path(e) %>
-       <%= link_to "Delet event", event_path(e), method: :delete, data: { confirm: "Are you sure" } %>
+       <%= link_to "Edit event", edit_event_path(e), class: "edit-btn" %>
+       <%= link_to "Delet event", event_path(e), method: :delete, data: { confirm: "Are you sure" }, class: "delete-btn" %>
      <% end %>
    
      <br>
